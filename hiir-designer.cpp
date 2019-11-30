@@ -54,6 +54,7 @@ int main(int argc, char** argv)
 
     std::cout << "Number of x2 stages: " << n_stages << '\n';
     std::cout << "Stopband attenuation: " << stopband_attenuation << " dB" << '\n';
+    std::cout << '\n';
     std::array<double, 1024> iir_coeffs;
     for (int i = 0; i < n_stages; ++i) {
         auto numCoeffs = hiir::PolyphaseIir2Designer::compute_coefs(iir_coeffs.data(), stopband_attenuation, transition_bw);
@@ -66,6 +67,7 @@ int main(int argc, char** argv)
         for (int coeff_idx = 0; coeff_idx < numCoeffs; coeff_idx++)
             std::cout << iir_coeffs[coeff_idx] << ' ';
         std::cout << "}" << '\n';
+        std::cout << '\n';
         transition_bw += 0.5;
         transition_bw /= 2.0;
     }
