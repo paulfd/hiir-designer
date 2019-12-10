@@ -64,8 +64,13 @@ int main(int argc, char** argv)
         }
         std::cout << "Coefficients for phase " << (i+1) << " with transition bandwidth " << transition_bw << " (Total " << numCoeffs << " coefficients)" << '\n';
         std::cout << "{ ";
-        for (int coeff_idx = 0; coeff_idx < numCoeffs; coeff_idx++)
-            std::cout << iir_coeffs[coeff_idx] << ' ';
+        for (int coeff_idx = 0; coeff_idx < numCoeffs; coeff_idx++) {
+            std::cout << iir_coeffs[coeff_idx];
+            if (coeff_idx != numCoeffs - 1)
+                std::cout << ',';
+            
+            std::cout << ' ';
+        }
         std::cout << "}" << '\n';
         std::cout << '\n';
         transition_bw += 0.5;
